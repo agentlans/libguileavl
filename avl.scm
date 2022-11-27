@@ -2,6 +2,7 @@
   #:use-module (system foreign)
   #:use-module (system foreign-library)
   #:export (avl
+            avl-compare ; get comparison function
 	    avl-copy
 	    avl-count
 	    avl-find

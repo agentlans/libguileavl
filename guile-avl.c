@@ -18,6 +18,11 @@ void guile_table_finalizer(void* tree) {
 #define ASSERT_AVL(x) assert_type(avl, x)
 #define ASSERT_AVLT(x) assert_type(avlt, x)
 
+// Returns the Guile Scheme comparison object
+SCM guile_avl_comp(SCM tree) {
+	return SCM_AVL(tree)->pavl_param;
+}
+
 // My custom function to create an AVL tree from a sorted array
 extern struct pavl_table *
 pavl_create_tree_from_list(void **arr, size_t n, pavl_comparison_func *compare,
@@ -149,10 +154,11 @@ SCM guile_avl_t_replace(SCM trav, SCM new_item) {
 void init_guile_avl()
 {
 	// Initialize types
-    avl = make_type("avl-tree");
-    avlt = make_type("avl-traverser");
+	avl = make_type("avl-tree");
+	avlt = make_type("avl-traverser");
 	// AVL tree
 	scm_c_define_gsubr("avl", 1, 0, 0, guile_avl_create);
+	scm_c_define_gsubr("avl-compare", 1, 0, 0, guile_avl_comp);
 	scm_c_define_gsubr("avl-copy", 1, 0, 0, guile_avl_copy);
 	scm_c_define_gsubr("avl-count", 1, 0, 0, guile_avl_count);
 	scm_c_define_gsubr("avl-find", 2, 0, 0, guile_avl_find);
