@@ -14,7 +14,7 @@ $(SO_FILE): guile-avl.c common.c init.c pavl.c list_to_avl.c helper.c
 	$(CC) $(CFLAGS) -g -fPIC -shared -o $@ $^ `pkg-config --cflags --libs guile-3.0`
 
 install: $(SO_FILE) $(NAME).scm
-	cp $^ $(EXTENSIONS_DIR)
+	cp $(SO_FILE) $(EXTENSIONS_DIR)
 	mkdir -p $(SITE_DIR)/extra
 	cp $(NAME).scm $(SITE_DIR)/extra
 
