@@ -174,4 +174,3 @@ void init_guile_avl()
 	scm_c_define_gsubr("avl-from-array", 2, 0, 0, guile_avl_create_from_array);
 }
 
-// gcc guile.c pavl.c `pkg-config --cflags --libs guile-3.0`

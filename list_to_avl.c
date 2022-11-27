@@ -33,12 +33,6 @@ pavl_create_tree_from_list(void **arr, size_t n, pavl_comparison_func *compare,
   if (tree == NULL)
     return NULL;
 
-  /*struct pavl_node* root;
-  root = allocator->libavl_malloc(allocator, sizeof *root);
-  if (root == NULL) {
-    allocator->libavl_free(allocator, tree);
-    return NULL;
-  }*/
   tree->pavl_root = NULL;
   tree->pavl_compare = compare;
   tree->pavl_param = param;
