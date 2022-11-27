@@ -39,6 +39,6 @@ Required:
 Copyright :copyright: 2022 Alan Tseng
 
 The source files `pavl.c` and `pavl.h` are from
-[GNU libavl](https://adtinfo.org/) copyright :copyright: 2022 Ben Pfaff.
+[GNU libavl](https://adtinfo.org/) copyright :copyright: 2004 Ben Pfaff.
 
 GNU Lesser General Public License version 3
