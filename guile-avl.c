@@ -35,6 +35,15 @@ SCM guile_avl_create(SCM compare) {
 		&guile_allocator));
 }
 
+SCM guile_avl_create_from_c_array(SCM arr_pointer, SCM size, SCM compare) {
+	size_t n = to_unsigned(size);
+	struct pavl_table* tbl;
+	tbl = pavl_create_tree_from_list(
+		scm_to_pointer(arr_pointer), n, guile_comparison_func,
+		compare, &guile_allocator);
+	return AVL_SCM(tbl);
+}
+
 SCM guile_avl_create_from_array(SCM arr, SCM compare) {
 	// Prepare the array
 	scm_t_array_handle handle;
@@ -176,7 +185,8 @@ void init_guile_avl()
 	scm_c_define_gsubr("avlt-prev!", 1, 0, 0, guile_avl_t_prev);
 	scm_c_define_gsubr("avlt-get", 1, 0, 0, guile_avl_t_cur);
 	scm_c_define_gsubr("avlt-set!", 2, 0, 0, guile_avl_t_replace);
-	// Create AVL tree from
+	// Create AVL tree from C and Scheme arrays
+	scm_c_define_gsubr("avl-from-c-array", 3, 0, 0, guile_avl_create_from_c_array);
 	scm_c_define_gsubr("avl-from-array", 2, 0, 0, guile_avl_create_from_array);
 }
 

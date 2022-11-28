@@ -21,6 +21,7 @@
 	    avlt-get
 	    avlt-set!
 	    avl-from-array
+	    avl-from-c-array
 	    avl-array))
 
 (load-extension "libguileavl" "init_guile_trees")
